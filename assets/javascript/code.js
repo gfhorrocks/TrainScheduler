@@ -9,7 +9,7 @@
     var firstTime = $("#trainTimeInput").val().trim();
     var frequencyTime = $("#frequencyInput").val().trim();
   
-    // Creates local "temporary" object for holding employee data
+    // Creates local "temporary" object for holding train data
     var newTrain = {
       name: trainName,
       destination: destName,
@@ -17,7 +17,7 @@
       frequency: frequencyTime
     };
   
-    // Uploads employee data to the database
+    // Uploads train data to database (firebase)
     database.ref().push(newTrain);
   
     // Clears all of the text-boxes
@@ -40,23 +40,18 @@
 
     // Current Time
     var currentTime = moment().format("HH:mm");
-    //console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
     // Difference between the times
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    //console.log("DIFFERENCE IN TIME: " + diffTime);
 
     // Time apart (remainder)
     var tRemainder = diffTime % frequencyTime;
-    //console.log("REMAINER: " +tRemainder);
 
     // Minute Until Train
     var tMinutesTillTrain = frequencyTime - tRemainder;
-    //console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
     // Next Train
-    var nextTrain = moment().add(tMinutesTillTrain, "minutes").format("hh:mm");
-    //console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes").format("hh:mm A");
 
     // Create the new row
     var newRow = $("<tr>").append(
