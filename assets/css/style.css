@@ -1,0 +1,21 @@
+#trainData th,
+td {
+  display: inline-block;
+  width: 20%;
+}
+
+.jumbotron , .card-header{
+    background-color: brown; 
+    color: white;
+}
+
+.btn , .btn-primary{
+    background-color: brown;
+    color: white;
+    border-style: solid;
+    border-color: brown;
+}
+
+td{
+    display: table-cell;
+}
