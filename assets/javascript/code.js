@@ -1,6 +1,6 @@
 
   var database = firebase.database();
-
+  
   setInterval(update,1000);  //Sets interval to one second to update clock
 
   function update(){
@@ -24,8 +24,8 @@
     };
   
     // Uploads train data to database (firebase)
-    database.ref().push(newTrain);
-  
+    database.ref().push(newTrain);    
+
     // Clears all of the text-boxes
     $("#trainNameInput").val("");
     $("#destinationInput").val("");
@@ -40,7 +40,9 @@
     var destName = childSnapshot.val().destination;
     var firstTime = childSnapshot.val().time;
     var frequencyTime = childSnapshot.val().frequency;
+    var key = childSnapshot.key;
 
+    // console.log(key);
     // First Time (pushed back 1 year to make sure it comes before current time)
     var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
 
@@ -66,7 +68,25 @@
       $("<td>").text(frequencyTime),
       $("<td>").text(nextTrain),
       $("<td>").text(tMinutesTillTrain),
+      $("<button class='removeButton' id="+key+">").text("X")
     );
+
+    newRow.attr("id",key);
+
     // Append the new row to the table
     $("#trainData").append(newRow);
   });
+
+$(document).on("click",".removeButton", function(){
+  
+  var key = $(this).attr("id");
+  console.log(key);
+
+  dbRef = database.ref(key);
+
+  dbRef.remove();
+
+  $("#"+key).closest('tr').remove();
+
+});
+  
