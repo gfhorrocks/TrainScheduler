@@ -44,7 +44,6 @@ $("#addTrainButton").on("click", function (event) {
     if($("#destinationInput").val()===""){$("#destinationInput").attr("placeholder","*Required").attr("class","bgred form-control")};
     if($("#trainTimeInput").val()===""){$("#trainTimeInput").attr("placeholder","*Required").attr("class","bgred form-control")};
     if($("#frequencyInput").val()===""){$("#frequencyInput").attr("placeholder","*Required").attr("class","bgred form-control")};
-  
   }
 });
 
