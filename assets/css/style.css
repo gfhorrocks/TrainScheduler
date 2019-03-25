@@ -30,3 +30,13 @@ td{
 button{
     margin-left: 30%;
 }
+
+.bgred{
+    background-color: lightcoral;
+    color: white;
+}
+
+.bgwhite{
+    background-color: white;
+    color: black;
+}
