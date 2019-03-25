@@ -19,3 +19,7 @@ td {
 td{
     display: table-cell;
 }
+
+#clock{
+    text-align: center;
+}

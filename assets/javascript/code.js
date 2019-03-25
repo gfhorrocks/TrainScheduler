@@ -1,5 +1,11 @@
 
   var database = firebase.database();
+
+  setInterval(update,1000);  //Sets interval to one second to update clock
+
+  function update(){
+    $("#clock").html(moment().format("MMMM D YYYY hh:mm:ss A"));  // pulls time using moment and adds to clock div
+  }
   
   $("#addTrainButton").on("click", function(event) {
     event.preventDefault();
